@@ -1,4 +1,6 @@
+.idea
 tsconfig.json
 typings.json
 gulpfile.js
-src/
+src
+typings

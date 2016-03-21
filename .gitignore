@@ -1,5 +1,5 @@
-.idea/
-dist/
-typings/
-node_modules/
+.idea
+dist
+typings
+node_modules
 *.log

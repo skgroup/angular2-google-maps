@@ -1,6 +1,6 @@
 {
   "name": "angular2-google-map",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Angular2 components for Google Maps",
   "main": "dist/core.js",
   "typings": "dist/core.d.ts",
@@ -19,7 +19,7 @@
   "author": "Stanislav Kiryukhin <korsar.zn@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "angular2": "2.0.0-beta.0"
+    "angular2": "^2.0.0-beta"
   },
   "devDependencies": {
     "browser-sync": "^2.11.1",

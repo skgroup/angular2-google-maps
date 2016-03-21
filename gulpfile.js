@@ -24,6 +24,13 @@ gulp.task('clean', function(done) {
 
 gulp.task('build', ['clean'], function() {
     const taskConfigCjs = $.typescript.createProject('tsconfig.json', {
+        target: 'ES5',
+        module: 'commonjs',
+        moduleResolution: 'node',
+        declaration: true,
+        removeComments: false,
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true,
         typescript: require('typescript')
     });
 

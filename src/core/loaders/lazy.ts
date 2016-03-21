@@ -89,7 +89,7 @@ export class LazyLoaderGoogleMapsApi extends LoaderGoogleMapsApi {
         return new Promise<void>((resolve, reject) => {
             const callbackName: string = `_gmi${new Date().getTime()}`;
 
-            window[callbackName] = resolve;
+            (<any>window)[callbackName] = resolve;
             document.body.appendChild(this.createScript(callbackName, reject));
         });
     }
@@ -125,7 +125,7 @@ export class LazyLoaderGoogleMapsApi extends LoaderGoogleMapsApi {
     }
 
     private getQueryParams(callbackName: string): string {
-        const queryParams = {
+        const queryParams: {[k: string]: any} = {
             v: this._options.apiVersion,
             callback: callbackName
         };

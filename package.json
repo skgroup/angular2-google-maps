@@ -1,0 +1,37 @@
+{
+  "name": "angular2-google-map",
+  "version": "0.1.0",
+  "description": "Angular2 components for Google Maps",
+  "main": "dist/core.js",
+  "typings": "dist/core.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "start": "gulp start",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "google",
+    "maps",
+    "angular2",
+    "ng2"
+  ],
+  "author": "Stanislav Kiryukhin <korsar.zn@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "angular2": "2.0.0-beta.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-header": "^1.7.1",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.12.1",
+    "gulp-uglify": "^1.5.3",
+    "merge2": "^1.0.1",
+    "systemjs": "^0.19.24",
+    "typescript": "^1.8.9"
+  }
+}

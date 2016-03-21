@@ -2,5 +2,4 @@
 dist/
 typings/
 node_modules/
-example
 *.log

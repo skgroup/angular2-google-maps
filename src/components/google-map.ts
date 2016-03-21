@@ -15,6 +15,7 @@ import {
     Input,
     OnInit,
     OnDestroy,
+    AfterContentInit,
     forwardRef,
     ElementRef,
     QueryList,
@@ -29,7 +30,7 @@ import {MapsManager} from '../services/maps-manager';
     selector: 'google-map',
     template: '<div class="sk-google-map-container" style="width: inherit; height: inherit"></div>'
 })
-export class GoogleMapComponent implements OnDestroy, OnInit {
+export class GoogleMapComponent implements OnDestroy, OnInit, AfterContentInit {
     static counters = 0;
 
     private _id: number;
@@ -72,8 +73,13 @@ export class GoogleMapComponent implements OnDestroy, OnInit {
      * The initial Map center. Required.
      */
     @Input()
-    set center(value: google.maps.LatLngLiteral) {
-        this._map.then(map => map.setCenter(value));
+    set center(value: google.maps.LatLngLiteral | Coordinates | {latitude: number, longitude: number}) {
+        this._map.then(map => {
+            map.setCenter({
+                lat: (<google.maps.LatLngLiteral>value).lat || (<Coordinates>value).latitude,
+                lng: (<google.maps.LatLngLiteral>value).lng || (<Coordinates>value).longitude
+            });
+        });
     }
 
 
@@ -214,11 +220,13 @@ export class GoogleMapComponent implements OnDestroy, OnInit {
         this._mapsManager.removeMap(this._name);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._map.then(map => {
-            this._markers
-                .filter(v => !v.hasMapComponent())
-                .forEach(v => v.setMapComponent(this, map));
+            this._markers.changes.subscribe(() => {
+                this._markers
+                    .filter(v => !v.hasMapComponent())
+                    .forEach(v => v.setMapComponent(this, map));
+            });
         });
     }
 

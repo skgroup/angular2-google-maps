@@ -88,8 +88,22 @@ export class GoogleMapMakerDirective implements OnInit, OnDestroy {
      * Marker position
      */
     @Input()
-    set position(value: google.maps.LatLngLiteral) {
-        this._marker.then(marker => marker.setPosition(value));
+    set position(value: google.maps.LatLngLiteral | Coordinates | {latitude: number, longitude: number}) {
+        this._marker.then(marker => {
+            marker.setPosition({
+                lat: (<google.maps.LatLngLiteral>value).lat || (<Coordinates>value).latitude,
+                lng: (<google.maps.LatLngLiteral>value).lng || (<Coordinates>value).longitude
+            });
+        });
+    }
+
+    /**
+     * If true, the marker receives mouse and touch events.
+     * Default value is true.
+     */
+    @Input()
+    set clickable(mode: boolean) {
+        this._marker.then(marker => marker.setClickable(mode));
     }
 
     /**
@@ -124,6 +138,15 @@ export class GoogleMapMakerDirective implements OnInit, OnDestroy {
     set visible(mode: boolean) {
         this._marker.then(marker => marker.setVisible(mode));
     }
+
+    /**
+     * Set marker zIndex for displayed on the map
+     */
+    @Input()
+    set zIndex(value: number) {
+        this._marker.then(marker => marker.setZIndex(value));
+    }
+
 
     @Input()
     set animation(value: google.maps.Animation) {

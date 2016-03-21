@@ -1,9 +1,12 @@
 {
   "name": "angular2-google-map",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Angular2 components for Google Maps",
   "main": "dist/core.js",
   "typings": "dist/core.d.ts",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",

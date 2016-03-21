@@ -15,6 +15,8 @@ import {Provider} from 'angular2/core';
 import {LoaderGoogleMapsApi} from './core/loader';
 import {LazyLoaderGoogleMapsApi, LAZY_LOADER_OPTIONS, LOADER_OPTIONS_DEFAULT} from './core/loaders/lazy';
 import {MapsManager} from './services/maps-manager';
+import {GoogleMapMakerDirective} from './components/google-map-marker';
+import {GoogleMapComponent} from './components/google-map';
 
 /**
  * The following list shows the approximate level of detail
@@ -52,3 +54,5 @@ export const GOOGLE_MAPS_PROVIDERS: any[] = [
     new Provider(LoaderGoogleMapsApi, {useClass: LazyLoaderGoogleMapsApi}),
     new Provider(MapsManager, {useClass: MapsManager}),
 ];
+
+export const GOOGLE_MAPS_DIRECTIVES: any[] = [GoogleMapComponent, GoogleMapMakerDirective];

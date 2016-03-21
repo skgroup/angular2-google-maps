@@ -30,7 +30,7 @@ bootstrap(App, [
 
 ### `<google-map>` ([see](https://developers.google.com/maps/documentation/javascript/reference#MapOptions)):
 - [backgroundColor]           = "string"
-- [center]                    = "{lat: number, lng: number}"
+- [center]                    = "{lat: number, lng: number} | {latitude: number, longitude: number} | Coordinates"
 - [disableDoubleClickZoom]    = "boolean"
 - [draggable]                 = "boolean"
 - [keyboardShortcuts]         = "boolean"
@@ -47,11 +47,13 @@ bootstrap(App, [
 
 
 ### `<google-map-marker>` ([see](https://developers.google.com/maps/documentation/javascript/reference#MarkerOptions)):
-- [position]  = "{lat: number, lng: number}"
+- [position]  = "{lat: number, lng: number} | {latitude: number, longitude: number} | Coordinates"
+- [clickable] = "boolean"
 - [icon]      = "string"
 - [opacity]   = "number"
 - [title]     = "string"
 - [visible]   = "boolean"
+- [zIndex]    = "number"
 - [animation] = "number"
 - [delay]     = "number" - Delay marker initialization
 

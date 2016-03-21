@@ -44,7 +44,7 @@ gulp.task('build', ['clean'], function() {
             .pipe(gulp.dest('dist/')),
 
         tsResult.js
-            .pipe($.uglify())
+            //.pipe($.uglify())
             .pipe($.header(banner, { pkg: pkg } ))
             .pipe($.sourcemaps.write('.'))
             .pipe(gulp.dest('dist/'))

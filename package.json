@@ -1,6 +1,6 @@
 {
   "name": "angular2-google-map",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Angular2 components for Google Maps",
   "main": "dist/core.js",
   "typings": "dist/core.d.ts",
@@ -13,6 +13,10 @@
     "start": "gulp start",
     "prepublish": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/skgroup/angular2-google-maps.git"
+  },
   "keywords": [
     "google",
     "maps",
@@ -21,6 +25,10 @@
   ],
   "author": "Stanislav Kiryukhin <korsar.zn@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skgroup/angular2-google-maps/issues"
+  },
+  "homepage": "https://github.com/skgroup/angular2-google-maps#readme",
   "peerDependencies": {
     "angular2": "^2.0.0-beta"
   },

@@ -22,6 +22,7 @@ import {
     ContentChildren,
     Attribute
 } from 'angular2/core';
+import {Subscription} from 'rxjs/Subscription';
 
 import {GoogleMapMakerDirective} from './google-map-marker';
 import {MapsManager} from '../services/maps-manager';
@@ -40,6 +41,7 @@ export class GoogleMapComponent implements OnDestroy, OnInit, AfterContentInit {
 
     @ContentChildren(forwardRef(() => GoogleMapMakerDirective), {})
     private _markers: QueryList<GoogleMapMakerDirective>;
+    private _markersSubscription: Subscription;
 
     constructor(@Attribute('name')
                 private _name: string,
@@ -218,20 +220,24 @@ export class GoogleMapComponent implements OnDestroy, OnInit, AfterContentInit {
 
     ngOnDestroy(): void {
         this._mapsManager.removeMap(this._name);
+        this._markersSubscription.unsubscribe();
     }
 
     ngAfterContentInit(): void {
-        this._map.then(map => {
-            this._markers.changes.subscribe(() => {
-                this._markers
-                    .filter(v => !v.hasMapComponent())
-                    .forEach(v => v.setMapComponent(this, map));
-            });
-        });
+        this._markersSubscription = this._markers.changes.subscribe(() => this.attachMarkersToMap());
+        this.attachMarkersToMap();
     }
 
     toString(): string {
         return this._name ? this._name : `sk.google-maps-${this._id}`;
+    }
+
+    private attachMarkersToMap(): void {
+        this._map.then(map => {
+            this._markers
+                .filter(v => !v.hasMapComponent())
+                .forEach(v => v.setMapComponent(this, map));
+        });
     }
 
     private getOptions(): google.maps.MapOptions {

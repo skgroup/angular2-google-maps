@@ -1,6 +1,6 @@
 {
   "name": "angular2-google-map",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Angular2 components for Google Maps",
   "main": "dist/core.js",
   "typings": "dist/core.d.ts",

@@ -1,3 +1,3 @@
-<google-map name2="test" [center]="{lat: lat, lng: lng}" [disableDefaultUI]="true" [backgroundColor]="'#000'" [minZoom]="minZoom" style="width: 100%; height: 100%">
-    <google-map-marker [position]="{lat: lat, lng: lng}" [animation]="'2'" [delay]="'2000'" (click)="onClick()"></google-map-marker>
+<google-map name2="test" [center]="{lat: lat, lng: lng}" [disableDefaultUI]="true" [minZoom]="minZoom" style="width: 100%; height: 100%">
+    <google-map-marker [position]="{lat: lat, lng: lng}" (click)="onClick()"></google-map-marker>
 </google-map>

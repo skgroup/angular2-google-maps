@@ -11,13 +11,12 @@
  * ----------------------------------------------
  */
 import {Component} from 'angular2/core';
-import {GoogleMapComponent} from '../../components/google-map';
-import {GoogleMapMakerDirective} from '../../components/google-map-marker';
+import {GOOGLE_MAPS_DIRECTIVES} from '../../core';
 
 @Component({
     selector: 'app',
     templateUrl: '/app/app.html',
-    directives: [GoogleMapComponent, GoogleMapMakerDirective]
+    directives: [GOOGLE_MAPS_DIRECTIVES]
 })
 export class AppComponent {
     lat: number = -34.397;

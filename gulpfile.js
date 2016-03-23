@@ -24,13 +24,6 @@ gulp.task('clean', function(done) {
 
 gulp.task('build', ['clean'], function() {
     const taskConfigCjs = $.typescript.createProject('tsconfig.json', {
-        target: 'ES5',
-        module: 'commonjs',
-        moduleResolution: 'node',
-        declaration: true,
-        removeComments: false,
-        emitDecoratorMetadata: true,
-        experimentalDecorators: true,
         typescript: require('typescript')
     });
 
@@ -44,17 +37,16 @@ gulp.task('build', ['clean'], function() {
             .pipe(gulp.dest('dist/')),
 
         tsResult.js
-            //.pipe($.uglify())
+            .pipe($.uglify({mangle: false}))
             .pipe($.header(banner, { pkg: pkg } ))
             .pipe($.sourcemaps.write('.'))
             .pipe(gulp.dest('dist/'))
     ]);
 });
 
-gulp.task('build:examples', function() {
+gulp.task('build:examples', ['clean'], function() {
     const taskConfigCjs = $.typescript.createProject('tsconfig.json', {
         module: 'system',
-        moduleResolution: 'node',
         typescript: require('typescript')
     });
 
@@ -75,7 +67,7 @@ gulp.task('build:examples', function() {
 
 
 
-gulp.task('start', ['clean', 'build:examples'], function() {
+gulp.task('start', ['build:examples'], function() {
     browserSync({
         port: 8080,
         startPath: '/',

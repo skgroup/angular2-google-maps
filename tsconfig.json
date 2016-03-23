@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "declaration": true,
     "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "outDir": "dist/",
     "rootDir": ".",
